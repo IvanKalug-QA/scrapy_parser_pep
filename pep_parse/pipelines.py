@@ -17,8 +17,8 @@ class PepParsePipeline:
 
     def close_spider(self, spider):
         results = [('Статус', 'Количество')]
-        for i in self.dict_status_pep:
-            results.append((i, self.dict_status_pep[i]))
+        for pep_status in self.dict_status_pep:
+            results.append((pep_status, self.dict_status_pep[pep_status]))
         results.append(('Total', self.count))
         date = datetime.now().date()
         time = datetime.now().time().strftime('%H-%M-%S')
