@@ -15,7 +15,8 @@ class PepSpider(scrapy.Spider):
             'name': ' '.join(
                 response.css(
                     'h1.page-title::text').get().strip().split()[3::]),
-            'status': response.css('abbr::text').get().strip()
+            'status': response.css(
+                'dt:contains("Status") + dd abbr::text').get()
         }
         yield PepParseItem(data)
 
