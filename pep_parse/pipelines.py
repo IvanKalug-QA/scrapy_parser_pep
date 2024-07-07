@@ -19,10 +19,9 @@ class PepParsePipeline:
         results = [('Статус', 'Количество')]
         results.extend(list(self.dict_status_pep.items()))
         results.append(('Total', self.count))
-        date = datetime.now().date()
-        time = datetime.now().time().strftime('%H-%M-%S')
+        date = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         with open(
-            f'{BASE_DIR}/status_summary_{date}_{time}.csv', 'w',
+            f'{BASE_DIR}/status_summary_{date}.csv', 'w',
              encoding='utf-8') as file:
             writer = csv.writer(file, dialect='unix')
             writer.writerows(results)
